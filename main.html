@@ -1,0 +1,255 @@
+﻿<html>
+
+<head>
+ <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<title> Planetarium i Obserwatorium im. Mikołaja Kopernika w Chorzowie</title>
+ <link rel="stylesheet" href="main.css">
+     <script type="text/javascript" > 
+//załaduj menu
+//załaduj plik ze stopką
+//załaduj plik z przesuwajacymi sie logami
+//załaduj css	 
+	 
+	 function loadjs(filename,funkcja){
+	 // kasowanie wczesnije zladowanych skryptów podstron
+	  var firstScript = document.getElementsByTagName('script')[0],
+      js = document.createElement('script');
+  js.src = filename;
+  js.onload = function () {
+  
+  funkcja() // w kazdym pliku na koncu mousi być taka funkcja odwołujaca sie już tylko do wyświetl na main
+  };
+  firstScript.parentNode.insertBefore(js, firstScript);
+	}
+	 
+	 
+	function start()
+	{
+	 //uruchom funkcje menu
+	 //uruchom funkcję stopka
+	 //uruchom funkcje z przesuwajacymi si elogami
+	 //załaduj i uruchom główną cześć strony
+	 loadjs("menu.js",rozpocznij)
+     
+	}
+	function AktywnaStrona(id)
+	{
+      	for(key=0;key<menu.length;key++)
+	 {
+	   czego='menu_'+key;
+	   element=document.getElementById(czego)
+	  if(key==id)
+	  {
+	  
+	  element.classList.add('aktywna')
+	  }
+	  else
+	  {
+	  element.classList.remove('aktywna')
+	  }
+	 }
+	}
+	
+	function uwidocznij(){
+	
+	var TblElem = document.getElementsByClassName('ElementyMenu')
+	 for(i=0;i<TblElem.length;i++)
+	{
+	 TblElem[i].style.display = "table-row";
+	 }
+	}
+	
+	function rozpocznij(){
+
+
+    //text="<div id='WaskieMenu' class='WaskieGlowne'><a href='javascript:uwidocznij()'></a></div><br>"	// tu ewentualnie też szukajka
+
+	text="<ul class='menuGlowne' id='planetarium_menuGlowne'> "
+    text+="<li id='WaskieMenu' class='WaskieGlowne'><a href='javascript:void(0);' onclick='javascript:uwidocznij()'>&#9776; menu</a></li>"
+	for(key=0;key<menu.length;key++)
+	 {
+	 
+	 
+	 if(menu[key].podstrony.length)
+	 {
+	  text+="<li id='menu_"+key+"' class='ElementyMenu ma_podstrony "+menu[key].kolor+"' onclick='javascript:AktywnaStrona("+key+")'><a href='javascript:void(0);'>"+menu[key].nazwa+"</a>"
+	  text+="<ul class='"+menu[key].kolor+"'>"
+	   for(i=0;i<menu[key].podstrony.length;i++)
+	    text+="<li onclick='javascript:AktywnaStrona("+key+")' class='ElementyMenu "+menu[key].kolor+"'><a href='"+menu[key].podstrony[i].link+"'>"+menu[key].podstrony[i].nazwa+"</a></li>"
+	   text+="</ul>"
+	 }
+	 else
+	 {
+	  text+="<li id='menu_"+key+"' class='ElementyMenu "+menu[key].kolor+"'><a href='"+menu[key].link+"' onclick='javascript:AktywnaStrona("+key+")'>"+menu[key].nazwa+"</a>"
+	 }
+	 text+="</li>"
+	 }
+	 text+="</ul>"
+	 wyswietl(text,"menu");
+	 }
+	 
+	
+	 
+	function wyswietl(co,gdzie)
+	{
+	if(document.all)
+    { 
+     document.all[gdzie].innerHTML=co;
+    }
+    else
+    {
+     if(document.layers)
+     {
+      document.layers[gdzie].document.open();
+      document.layers[gdzie].document.write(co);
+      document.layers[gdzie].document.close();
+     }
+     if(document.getElementById)
+      document.getElementById(gdzie).innerHTML=co;
+    }
+	}
+		
+
+   </script>
+   
+</head>
+
+ <body onload='start();' class="domyslny">
+ <header>
+ <img src='img/logo.png' class='logo'></img><P class='napis'>Planetarium i Obserwatorium<br> im. Mikołaja Kopernika <br>w Chorzowie</P>
+ <div id='sentencja'>Niebo w zasięgu ręki</div>
+<nav id="menu"></nav>
+</header>
+<div id="strona" class="strona">
+<div id="main" class="main_row">
+<div id="test1" class='zawartosc'>
+lorem ipsum Adam<br> Mickiewicz nigdy nie nazwał Pana Tadeusza eposem lub epopeją, nie określili go też w ten sposób pierwsi czytelnicy utworu, znali bowiem zupełnie inne wzorce epopeiczności. Badacze literatury podkreślają, że utwór ten zawiera elementy poematu heroicznego, heroikomicznego, satyry, powieści walterskotowskiej, baśni, gawędy oraz sielanki. W związku z tym jest przez nich różnie definiowany: Bogusław Bednarek nazywa Pana Tadeusza „deuteroepopeją” (czyli tekstem „wtóroepopeicznym”, pojęcie analogiczne do „księga deuterokanoniczna”), Kazimierz Wyka – „sumą gatunków”, Stefania Skwarczyńska natomiast zjawiskiem literackim, którego cechuje „gatunkowa wieloaspektowość”[5].
+
+Pierwsi czyt<br>elnicy Pana Tadeusza nie tylko nie określili utworu mianem epopei, ale nawet wyrażali swoje niezadowolenie z powodu niewielkiej ilości podniosłego tonu w utworze; uważano, że zawiera za dużo treści rubasznych. Zauważono także, że nie pojawia się w utworze żadna wielka postać historyczna (pojawienie się takiej osoby miało być zgodne z kanonami eposu). O chłodnym przyjęciu dzieła świadczą także liczby: Dziady cz. III wydrukowano w dwóch tysiącach egzemplarzy, które zostały sprzedane w ciągu roku, natomiast pierwsze wydanie Pana Tadeusza przygotowano w trzech tysiącach egzemplarzy, które zalegały potem na księgarskich półkach[6]. Dwa lata po publikacji Pana Tadeusza pojawiła się entuzjastyczna recenzja Wilhelma Häringa, który jako pierwszy określił utwór mianem epopei:
+Quote-alpha.png
+To najno<br>wsze dzieło Mickiewicza jest doskonałym poematem epickim, dziełem, którego forma jest nam obca, ale istota odpowiada najsurowszym wymogom stawianym przez naszą krytykę estetyczną eposowi, a mianowicie jego najwyższej, a według innych jedynej odmianie. Pan Tadeusz przynosi bowiem pełny zamknięty obraz określonego narodu i jego specyficznych cech w określonej epoce; ciągłą interesującą akcję z bogatymi epizodami, z równie ciekawym, jak i pouczającym spojrzeniem wstecz na historyczną przeszłość; mistrzowskie soczyste i pełne opisy miejsc, stosunków; zwyczajów; plastyczny obraz martwej, jak i żywej natury i do tego charakterystykę tak odważną, trafną, uzależnioną od nastroju (...). Nie brak temu bohaterskiemu poematowi, a takim on jest, pięknych, idyllicznych rysów; a narodowej tej epopei, w której poeta wytyczył sobie piękny cel uchwycenia w poetyckich obrazach pewnej właściwości narodowej, tam, gdzie nawet najbardziej płomienny duch twórcy nie zostanie poetą. W poemacie tym znajduję całkiem oryginalną samorodną formę, która stary epos splata z powieścią; wreszcie w istnieniu tego poematu znajduję dowód, że można jeszcze dziś tworzyć epopeje[7].
+
+Stat<br>us arcydzieła literatury polskiej oraz eposu narodowego Pan Tadeusz uzyskał po 1863 roku[8]. W 1875 roku ukazała się pierwsza monografia dzieła, w której jej autor – Hugo Zathey – ocenił bardzo wysoko utwór Mickiewicza. Praca ta wywarła duży wpływ na późniejszych badaczy Pana Tadeusza.
+
+Swoją pracę Zathey rozpoczął od polemiki z tezą, popularną w okresie polskiego romantyzmu, zgodnie z którą tylko przedchrześcijańska Polska mogła stworzyć dzieło na miarę wielkiej „epopei ludowej”, a chrześcijaństwo tylko zniwelowało te zadatki. Zathey nie przychylił się do takiej tezy, nie podzielając tym samym romantycznych uprzedzeń. Kwestię epopeiczności utworu rozpatrywał w odniesieniu do popularnych w XIX w. na gruncie niemieckim teorii estetycznych dotyczących eposu, wyłożonych w dziełach Jeana Paula, Vischera oraz przede wszystkim Hegla. Według autora porównanie wypadło na korzyść Pana Tadeusza – w utworze znajduje się bowiem ujęcie momentu dziejowego dla narodu w taki sposób, że uwypukla jego dążenie do niepodległości. Ponadto akcja poematu grupuje się wokół jednej potężnej indywidualności, która skupia wszystkie indywidualne cechy narodu. Zaś element tragizmu jest – według Zathey’a – należycie wprowadzony. Kompozycja poematu, stosunek epizodów do akcji głównej oraz obrazów przyrody do wydarzeń zawartych w utworze mają być również zgodne z heglowską estetyką epopei: Tak tu, jak i we wszystkich innych względach zaspokaja poeta w zupełności najwybredniejsze wymagania krytyki[9]
+<br>
+Także współcześni literaturoznawcy zajmowali się problemem stosunku Pana Tadeusza do wzorów antycznej epopei. Na podstawie badań Wilhelma Bruchnalskiego[10] i Stanisława Windakiewicza[11] oraz Tadeusza Karyłowskiego[12] Stanisław Pigoń wysnuł wniosek, że Mickiewicz świadomie, jako rodzaj hołdu dla starego olbrzyma poezji epickiej […] włączył w księgę IX kilka sytuacyj, wprost nawet przytoczeń z Iliady Homera, w drobnym stopniu z Eneidy Wergiliusza[13]. Juliusz Kleiner zaś uważał[10], że Wojski to Homerowy Nestor, zwrócił także uwagę, że zasypianie bohaterów lub udawanie się na spoczynek stanowi koniec ksiąg [Pana Tadeusza], jak w p. I, VII i IX Iliady, jak w p. 1, 5, 6, 14, 16, 18 i 19 Odysei. Świt na początku księgi przywodzi na myśl rozpoczynanie pieśni od Eos różanopalcej. Bójka w ks. V i potem bitwa z Moskalami sposobem przedstawienia i przebiegiem walk niekiedy ożywić ma w pamięci zapasy bohaterów Homerowych lub Wergiliuszowych i spolszczenie opowieści helleńskiej przez Dmochowskiego, a Telimena […] pragnie w ks. VII zatrzymać dla siebie serce Tadeusza tak, jak Dydona zatrzymać pragnie przy sobie Eneasza[10]. W konkluzji Kleiner napisał, że wszystkie te świadome upodobnienia scen, postaci, wyrażeń do epiki Homerowej i Wergiliuszowej wprowadzone są żartobliwie; u tłumacza i naśladowcy Wolterowskich powiastek, u autora „Kartofli”, u słuchacza Borowskiego dziwić to nie może, że epika żartobliwa, parodystyczna, uprawiana con amore przez wiek XVIII, jest dlań kontynuacją dostojnego starożytnego eposu, że i koniec bójki w p. V i czyny wojenne zajazdu przedstawia w stylu utworów heroikomicznych. Inwokacja wszakże nie pozostawia wątpliwości o powadze zamiaru epickiego[10].
+<br>
+W Panu Tadeuszu znalazły się też „intencjonalne” – jak pisze Tadeusz Sinko – cytaty z polskiego tłumaczenia Iliady, którego autorem był Franciszek Ksawery Dmochowski, a którego Mickiewicz czytał w młodości. Są to trzy dwuwersy: pierwszy, pochodzący z Iliady brzmi tak:
+
+    vI z boku wedle wnętrza szatę mu przewierci
+    Schylił się zręcznie Parys i wydarł się śmierci[14].
+<br>
+W poemacie Mickiewicza czytamy:
+<br>
+    Uderza w dno gitary, na wylot ją wierci,
+    Schylił się na bok Ryków i tak uszedł śmierci[15].
+<br>
+Inny cytat tłumaczenia Dmochowskiego brzmi tak:
+<br>
+    Ten łuk napina Pandar i do ziemi chyli,
+    Wierni go towarzysze tarczami okryli[14].
+<br>
+W Panu Tadeuszu natomiast, major Płut, widząc Tadeusza przed swym batalionem, namówił Gonta, by zastrzelił bijącego się z Rykowem Polaka:
+<br>
+    Gont odwodzi karabin, zamyka się chyli,
+    <br>Wierni go towarzysze płaszczami okryli[16].
+
+Trzeci cytat pochodzi z samego początku ks. II Iliady:
+<br>
+    Inni spali bogowie i ziemscy rycerze
+    Oczu tylko Jowisza sen słodki nie bierze[14].
+<br>
+Mickiewicz przeniósł to do swojego poematu w następujący sposób:
+<br>
+    Spali: gospodarz domu, wodze i żołnierze,
+    Oczu tylko Wojskiego sen słodki nie bierze[17].
+<br>
+Pigoń twierdzi[18], że to zapożyczenie ma na celu wywołać efekt humorystyczny (zestawienie osobistości i zatrudnień: Jowisz strudzony biegiem spraw ludzkich, Wojski – przygotowaniem obiadu).
+<br>
+Epopeja Mickiewicza rozpoczyna się porównaniem utraconej ojczyzny do utraconego zdrowia oraz porównaniem cudu, dzięki któremu emigranci polscy mają powrócić na łono kraju z cudownym ocaleniem poety w dzieciństwie za sprawą modłów jego mamy do Matki Boskiej. Porównania tego typu są w Panu Tadeuszu najczęstszym tropem poetyckim. Kilka z nich ma swoje źródła w poezji antycznej – i tak np. w księdze V, kiedy Telimena robi wymówki Tadeuszowi, ten ucieka Jak szczupak, gdy mu oścień skróś piersi przekole, / Pluska się i nurtuje, myśląc, że uciecze, / Ale wszędzie żelazo i sznur z sobą wlecze (w. 238 i nast.). Sinko dopatruje się w tym fragmencie[19] Wergiliuszowego porównania (Eneida IV 69–73), użytego tam w zastosowaniu do królowej Dydony w następującej sytuacji: królowa Kartaginy zakochała się gwałtownie w bawiącym u niej w gościnie Eneaszu, lecz pomna ślubów złożonych po śmierci męża, że już nigdy nie wyjdzie za mąż, stara się stłumić swój nowy afekt, choć siostra jej, Anna, zachęca ją do poślubienia bohaterskiego przybysza w imię dobra państwa zagrożonego przez sąsiadów i radzi gniew bogów spowodowany złamaniem ślubów przebłagać obfitymi ofiarami. Niestety, ofiary królowej nie uspokajają:
+
+    Płonie Dydo, nieszczęsna wskroś i przez gród cały
+    Błąka się, niby łania trafiona od strzały, <br>
+</div><div id="test2" class='zawartosc'>
+test2<br>
+  vI z boku wedle wnętrza szatę mu przewierci
+    Schylił się zręcznie Parys i wydarł się śmierci[14].
+<br>
+W poemacie Mickiewicza czytamy:
+<br>
+    Uderza w dno gitary, na wylot ją wierci,
+    Schylił się na bok Ryków i tak uszedł śmierci[15].
+<br>
+Inny cytat tłumaczenia Dmochowskiego brzmi tak:
+<br>
+    Ten łuk napina Pandar i do ziemi chyli,
+    Wierni go towarzysze tarczami okryli[14].
+<br>
+W Panu Tadeuszu natomiast, major Płut, widząc Tadeusza przed swym batalionem, namówił Gonta, by zastrzelił bijącego się z Rykowem Polaka:
+<br>
+    Gont odwodzi karabin, zamyka się chyli,
+    <br>Wierni go towarzysze płaszczami okryli[16].
+
+Trzeci cytat pochodzi z samego początku ks. II Iliady:
+<br>
+    Inni spali bogowie i ziemscy rycerze
+    Oczu tylko Jowisza sen słodki nie bierze[14].
+<br>
+Mickiewicz przeniósł to do swojego poematu w następujący sposób:
+<br>
+    Spali: gospodarz domu, wodze i żołnierze,
+    Oczu tylko Wojskiego sen słodki nie bierze[17].
+<br>
+</div>
+</div>
+
+<div id="main2" class="main_row">
+<div id="test6" class='zawartosc'>
+lslslslslskf;ksjals;krg
+o towarzysze płaszczami okryli[16].
+
+Trzeci cytat pochodzi z samego początku ks. II Iliady:
+<br>
+    Inni spali bogowie i ziemscy rycerze
+    Oczu tylko Jowisza sen słodki nie bierze[14].
+<br>
+Mickiewicz przeniósł to do swojego poemat
+</div><div id="test3" class='zawartosc'>
+skdlklklksflknlkfsfdlkl.vk
+o towarzysze płaszczami okryli[16].
+
+Trzeci cytat pochodzi z samego początku ks. II Iliady:
+<br>
+    Inni spali bogowie i ziemscy rycerze
+    Oczu tylko Jowisza sen słodki nie bierze[14].
+<br>
+Mickiewicz przeniósł to do swojego poemat
+</div>
+</div>
+<div id="main3" class="main_row">
+<div id="test4" class='zawartosc'>
+.lksdfk.smf.llddddddddd
+o towarzysze płaszczami okryli[16].
+
+Trzeci cytat pochodzi z samego początku ks. II Iliady:
+<br>
+    Inni spali bogowie i ziemscy rycerze
+    Oczu tylko Jowisza sen słodki nie bierze[14].
+<br>
+Mickiewicz przeniósł to do swojego poemat
+</div>
+</div>
+</div>
+<footer>
+<div id="dolnemenu" class="dolne">dolne</div>
+<div id="wspolpraca" class="dolne">wsp</div>
+<div id="legalnotice">
+Wszelkie prawa zastrzeżone. Prawa autorskie Planetarium Śląskie 2016<br>
+Projekt i wykonanie Damian Jabłeka<br>
+</div>
+</footer>
+</body>
+
+</html>
